@@ -1,4 +1,16 @@
-		
+
+
+//deletes an model entry
+
+ lightboxUser.findOneAndDelete({name: new RegExp('^'+"go99"+'$', "i")}, function(err, doc) {
+ 	 console.log(doc);
+  });	
+	
+	
+	
+	
+	
+	
     //single element update
     lightboxUser.findOneAndUpdate({username: "lora29"}, {$set:{savedFunctions:"gotem"}},function(err, doc) {
 			 console.log(doc);
