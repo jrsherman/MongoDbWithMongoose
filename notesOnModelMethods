@@ -1,0 +1,70 @@
+		
+    //single element update
+    lightboxUser.findOneAndUpdate({username: "lora29"}, {$set:{savedFunctions:"gotem"}},function(err, doc) {
+			 console.log(doc);
+		 });//updates coppies record to a new record but doesnt delete old record
+		
+		    //single array element update
+		 lightboxUser.findOneAndUpdate({username: "lora29"}, {$set:{savedArrayValuePatterns:[6,6,6]}},function(err, doc) {
+ 			 console.log(doc);
+ 		 });//updates coppies record to a new record but doesnt delete old record
+
+
+//nested array push this adds an an array object to saved array pat2
+	 lightboxUser.findOneAndUpdate({username: "lora30"}, {$push:{savedArrayValuePatterns2:{pattern:[5,5,6,2,5,6,7,3,6,3,7,2,34,35,46457,235,235,34346,23452,2,6,46,34,43,6]}}},function(err, doc) {
+			 console.log(doc);
+		 });//updates coppies record to a new record but doesnt delete old record
+		 //this finds the pattern sub array and replaces all of the patterns =with one pattern
+		 
+     
+     //using set this replaces all the arrays in saved array val pattern with a single array pattern
+		  lightboxUser.findOneAndUpdate({username: "lora30"}, {$set:{savedArrayValuePatterns2:{pattern:[5,5,6,2,5,6,7,3,6,3,7,2,34,35,46457,235,235,34346,23452,2,6,46,34,43,6]}}},function(err, doc) {
+			 console.log(doc);
+		 });//updates coppies record to a new record but doesnt delete old record
+		 //this finds the pattern sub array and replaces all of the patterns =with one pattern
+		 
+		 //find one and output after targeting saved array
+     	lightboxUser.findOne({username: "lora31"}, function(err, doc) {
+			 console.log(doc.savedArrayValuePatterns2);
+			});
+
+
+
+
+
+
+var newUser = new lightboxUser({
+	savedArrayValuePatterns2: [{
+		pattern: [122,5123,3124125,1354236,23346,134124,23354,112,1341324,34634564231,2342342,2342345]
+	},
+	{
+		pattern: [2,3,8]
+	},
+	{
+		pattern: [7,7,7]
+	}
+	,
+	{
+		pattern: [3,1,99]
+	}
+],
+	username: 'lora31',
+	savedFunctions: "sin(x)+1",
+
+	savedArrayValuePatterns: [1,2,3]
+	});
+
+
+
+
+//save a user to the database with the model inputs
+	newUser.save(function (err, doc) {
+		lightboxUser.findOneAndUpdate({name: new RegExp('^'+"lora31"+'$', "i")}, {$set:{cause:false}}, {new: true},function(err, doc) {
+			 console.log(doc);
+		 });//updates coppies record to a new record but doesnt delete old record
+	
+		lightboxUser.findOne({username: new RegExp('^'+"lora31"+'$', "i")}, function(err, doc) {
+		    console.log(doc);
+		   });
+	 	 if (err) return console.error(err);
+	   });
